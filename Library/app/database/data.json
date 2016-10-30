@@ -1,0 +1,65 @@
+{
+    "book": {
+        "title": {
+            "type": "String",
+            "unique": "true",
+            "required": "true"
+        },
+        "summary": {
+            "type": "String",
+            "unique": "true",
+            "required": "true"
+        },
+        "borrowed": "Number",
+        "quantity": "Number",
+        "picture": "String",
+        "users": "String",
+        "updated_at": {
+            "type": "Date",
+            "default": "Date.now"
+        }
+    },
+    "user": {
+        "firstname": {
+            "type": "String",
+            "unique": "true",
+            "required": "true"
+        },
+        "lastname": {
+            "type": "String",
+            "unique": true,
+            "required": true
+        },
+        "login": {
+            "type": "String",
+            "unique": true,
+            "required": true
+        },
+        "password": {
+            "type": "String",
+            "unique": true,
+            "required": true
+        },
+        "online": {
+            "type": "Boolean",
+            "unique": true,
+            "required": true
+        },
+        "updated_at": {
+            "type": "Date",
+            "default": "Date.now"
+        }
+    },
+    "message": {
+        "title": "String",
+        "Subject": "String",
+        "text": "String",
+        "Sender": "String",
+        "receiver": "String",
+        "Sent": "Boolean",
+        "updated_at": {
+            "type": "Date",
+            "default": "Date.now"
+        }
+    }
+}

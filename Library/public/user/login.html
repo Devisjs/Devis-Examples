@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html ng-app="userApp">
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container" ng-controller="userCtrl">
+        <h1>Login</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Login</th>
+                    <td><input class="form-control" ng-model="Login.login" /></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input class="form-control" ng-model="Login.password" type="password" /></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-primary" ng-click="login()">Login</button></td>
+                </tr>
+                <tr>
+                  <td><p style="color:red;font-size:20px">{{log}}</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="../controllers/user.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html ng-app="bookApp">
+
+<head>
+	<title>Books List Api</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container" ng-controller="bookCtrl">
+		<h1>Books List Api</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>title</th>
+					<th>summary</th>
+					<th>borrowed</th>
+					<th>quantity</th>
+					<th>picture</th>
+					<th>Action</th>
+					<th>Update</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="book.title" /></td>
+					<td><input class="form-control" ng-model="book.summary" /></td>
+					<td></td>
+					<td><input class="form-control" ng-model="book.quantity" type="number" /></td>
+					<td><input class="form-control" ngf-select ng-model="book.picture" type="file" /></td>
+					<td><button class="btn btn-primary" ng-click="addBook()">Add Book</button></td>
+					<td><button class="btn btn-info" ng-click="update()">Update</button><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+				</tr>
+				</tr>
+				<tr ng-repeat="book in books">
+					<td>{{book.title}}</td>
+					<td>{{book.summary}}</td>
+					<td>{{book.borrowed}}</td>
+					<td>{{book.quantity}}</td>
+					<td ng-if="book.picture"><img width="150px" height="100px" src="/alt/img/{{book.picture}}"></td>
+					<td>
+						<div ng-repeat="(key, value) in book.users">
+							<button  ng-click="Throw(book,key)" ng-if="value">Throw {{key}}</button>
+						</div>
+					</td>
+					<td><button class="btn btn-danger" ng-click="remove(book.title)">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="get(book.title)">Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+	<script src="../controllers/node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+	<!-- for no html5 browsers support -->
+	<script src="../controllers/node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+	<script src="../controllers/book.js"></script>
+</body>
+
+</html>

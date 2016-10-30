@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html ng-app="userApp">
+
+<head>
+	<title>Users List Api</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container" ng-controller="userCtrl">
+		<h1>Users List Api</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>login</th>
+					<th>password</th>
+					<th>email</th>
+					<th>Admin</th>
+					<th>Action</th>
+					<th>Update</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="user.firstname" /></td>
+					<td><input class="form-control" ng-model="user.lastname" /></td>
+					<td><input class="form-control" ng-model="user.login" /></td>
+					<td><input class="form-control" ng-model="user.password" type="password"/></td>
+					<td><input class="form-control" ng-model="user.email" /></td>
+          <td><input type="checkbox" class="form-control" ng-model="user.admin"></td>
+					<td><button class="btn btn-primary" ng-click="addUser()">Add Contact</button></td>
+          <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+        </tr>
+				</tr>
+				<tr ng-repeat="user in users">
+					<td>{{user.firstname}}</td>
+					<td>{{user.lastname}}</td>
+					<td>{{user.login}}</td>
+					<td>*******</td>
+					<td>{{user.email}}</td>
+					<td>{{user.admin}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(user.login)">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="get(user.login)">Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+	<script src="../controllers/user.js"></script>
+</body>
+
+</html>

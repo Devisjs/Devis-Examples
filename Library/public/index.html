@@ -1,0 +1,97 @@
+<!DOCTYPE>
+<html ng-app="frontApp">
+
+<head>
+	<title>Index</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container" ng-controller="frontCtrl">
+		<h1>Index</h1>
+		<table class="table">
+			<tr>
+				<td><button class="btn btn-primary" ng-click="Showbooks()">Books</button></td>
+				<td ng-show="books"><button class="btn btn-primary" ng-click="Borrowed()">Borrowed books</button></td>
+				<div>
+					<tr ng-show="books">
+						<th>title</th>
+						<th>summary</th>
+						<th>picture</th>
+						<th> available quantity</th>
+					</tr>
+					<tr ng-repeat="book in books" ng-if="!book.users[currentUser]">
+						<td>{{book.title}}</td>
+						<td>{{book.summary}}</td>
+						<td><img width="150px" height="100px" src="/alt/img/{{book.picture}}"></td>
+						<td>{{book.quantity-book.borrowed}}</td>
+						<td ng-if="borrow"><button class="btn btn-primary" ng-click="Borrow(book)">Borrow</button></td>
+					</tr>
+				</div>
+			</tr>
+			<tr>
+				<td><button class="btn btn-primary" ng-click="Showmails()">Mails</button></td>
+				<td ng-show="messages"><button class="btn btn-primary" ng-click="Showmails()">emails sent</button></td>
+				<td ng-show="messages"><button class="btn btn-primary" ng-click="Receiptsmails()">Receipts emails</button></td>
+				<td ng-show="messages"><button class="btn btn-primary" ng-click="sendMail()">send mail</button></td>
+				<div ng-show="greed">
+					<tr ng-show="greed">
+						<td>To</td>
+						<td><select name="repeatSelect" id="repeatSelect" ng-model="message.receiver">
+								<option ng-repeat="user in users" value="{{user.login}}">
+										{{user.login}}
+								</option>
+						</select></td>
+					</tr>
+					<tr ng-show="greed">
+						<td>Title</td>
+						<td><input class="form-control" ng-model="message.title" /></td>
+					</tr>
+					<tr ng-show="greed">
+						<td>Subject</td>
+						<td><input class="form-control" ng-model="message.subject" /></td>
+					</tr>
+					<tr ng-show="greed">
+						<td>Text</td>
+						<td><input class="form-control" ng-model="message.text" style="line-height: 20px;" /></td>
+					</tr>
+					<tr ng-show="greed">
+						<td><button class="btn btn-primary" ng-click="send()">Send Email</button></td>
+					</tr>
+				</div>
+				<tr>
+					<tr ng-show="messages">
+						<th>title</th>
+						<th>subject</th>
+						<th>text</th>
+						<th ng-if="sender">sent to</th>
+						<th ng-if="!sender">send by</th>
+					</tr>
+					<tr ng-repeat="message in messages" ng-if="!message.delete[currentUser]">
+						<td>{{message.title}}</td>
+						<td>{{message.subject}}</td>
+						<td>{{message.text}}</td>
+						<td ng-if="sender">{{message.receiver}}</td>
+						<td ng-if="!sender">{{message.sender}}</td>
+						<td><button class="btn btn-primary" ng-click="deleteMail(message)">Delete</button></td>
+					</tr>
+
+				</tr>
+			</tr>
+			<tr ng-if="role=='admin'">
+				<td><button class="btn btn-primary" ng-click="RedirectBooks()">Manage Books</button></td>
+			</tr>
+			<tr ng-if="role=='admin'">
+				<td><button class="btn btn-primary" ng-click="RedirectUsers()">Manage Users</button></td>
+			</tr>
+			<td><button class="btn btn-primary" ng-click="Logout()">Logout</button></td>
+			<tr>
+			</tr>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+	<script src="../controllers/frontend.js"></script>
+</body>
+
+</html>
