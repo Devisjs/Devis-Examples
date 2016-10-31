@@ -16,7 +16,7 @@ devis.act({
 });
 
 ```
-* Update userData and put what you want. It will your first user admin.
+* Update userData and put what you want. it'll be your first administrator
 
 * Run this commands in Separate terminals
 
