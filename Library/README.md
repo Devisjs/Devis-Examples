@@ -27,6 +27,7 @@ devis start
 
 * Stop the index connection.
 * Put the code (devis.act...) that we announced in the second step in comment.
-run ```devis star ``` again.
+
+* run ```devis star ``` again.
 
 * open your browser open 127.0.0.1:8888 and log.
