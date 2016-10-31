@@ -1,11 +1,11 @@
 #Library
-*Make sure that you have mongodb
-*Remove this comments from the index.js:
+* Make sure that you have mongodb
+* Remove this comments from the index.js:
 ```javascript
 let userData={firstname:"myuser",lastname:"myuser",login:"myuser",password:"sdsd",email:"myuser@email.com",admin:true};
 devis.act({
     clientId: 1,
-    role: "users",
+    role: "users", 
     action: "add"
 }, {
     data: userData
@@ -16,17 +16,17 @@ devis.act({
 });
 
 ```
-*Update userData and put what you want. It will your first user admin.
+* Update userData and put what you want. It will your first user admin.
 
-*Run this commands in Separate terminals
+* Run this commands in Separate terminals
 
 ```bash
 node app/root
 devis start
 ```
 
-*Stop the index connection.
-*Put the code (devis.act...) that we announced in the second step in comment.
+* Stop the index connection.
+* Put the code (devis.act...) that we announced in the second step in comment.
 run ```devis star ``` again.
 
-*open your browser open 127.0.0.1:8888 and log.
+* open your browser open 127.0.0.1:8888 and log.
