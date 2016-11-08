@@ -5,6 +5,7 @@ let devis;
 
 
 function POST(req, res) {
+    console.log(req.body);
     req.body = JSON.stringify(req.body);
     devis.act({
         clientId: 1,
@@ -13,7 +14,7 @@ function POST(req, res) {
     }, {
         data: req.body
     }, (err, result) => {
-        if (err) throw err;
+        if (err) console.log(err);
         res.json(result);
     });
 }

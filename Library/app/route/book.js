@@ -15,7 +15,7 @@ function POST(req, res) {
     }, {
         data: req.body
     }, (err, result) => {
-        if (err) throw err;
+        if (err) console.log(err);
         res.json(result);
     });
 }

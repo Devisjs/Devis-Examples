@@ -21,7 +21,7 @@ frontApp.controller('frontCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.greed = null;
             $scope.currentUser = response.user;
             $scope.role = response.role;
-            currentUser = response;
+            currentUser = response.user;
         });
     };
     getSession();
