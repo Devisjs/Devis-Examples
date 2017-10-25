@@ -1,0 +1,15 @@
+{
+  "name": "devismongodriver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "reida ismail <ismailrei@gmail.com> (https://github.com/ismailrei)",
+  "license": "ISC",
+  "dependencies": {
+    "devis": "^1.2.3",
+    "mongodb": "^2.2.33"
+  }
+}
