@@ -35,7 +35,10 @@ test("local: a pattern is called in the same process", async () => {
 
 test("tcp: the client gets the result computed by the remote service", async () => {
     await startServer("tcp/service.js", "server launched");
-    assert.match(await runExample("tcp/client.js"), /sum: 3/);
+    const out = await runExample("tcp/client.js");
+    assert.match(out, /sum: 3/);
+    // A remote error must reach the caller as a rejected call, not crash either process.
+    assert.match(out, /divide: division by zero/);
 });
 
 test("mongodb: inserted documents are read back", async () => {
@@ -48,5 +51,5 @@ test("redis: a published message reaches the subscriber", async () => {
 
 test("rabbitmq: the client gets the result computed by the remote service", async () => {
     await startServer("rabbitmq/server.js", "server launched");
-    assert.match(await runExample("rabbitmq/client.js"), /sum: "?3"?/);
+    assert.match(await runExample("rabbitmq/client.js"), /sum: 3/);
 });
