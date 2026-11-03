@@ -16,9 +16,9 @@ function runExample(file) {
     });
 }
 
-function startServer(file, readyText) {
+function startServer(file, readyText, env) {
     return new Promise((resolve, reject) => {
-        const child = spawn(process.execPath, [path.join(root, file)]);
+        const child = spawn(process.execPath, [path.join(root, file)], { env: Object.assign({}, process.env, env) });
         servers.push(child);
         child.stdout.on("data", (data) => {
             if (data.toString().includes(readyText)) resolve();
@@ -39,6 +39,14 @@ test("tcp: the client gets the result computed by the remote service", async () 
     assert.match(out, /sum: 3/);
     // A remote error must reach the caller as a rejected call, not crash either process.
     assert.match(out, /divide: division by zero/);
+});
+
+// Load balancing is the point of running several instances: both must receive calls.
+test("balance: calls alternate between two instances of a service", async () => {
+    await startServer("balance/service.js", "server launched", { PORT: "3031" });
+    await startServer("balance/service.js", "server launched", { PORT: "3032" });
+    const out = await runExample("balance/client.js");
+    assert.match(out, /sum 1 by 3031\nsum 2 by 3032\nsum 3 by 3031\nsum 4 by 3032/);
 });
 
 test("mongodb: inserted documents are read back", async () => {

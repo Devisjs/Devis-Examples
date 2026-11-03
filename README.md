@@ -17,6 +17,7 @@ npm install
 | --- | --- | --- |
 | [local](local/index.js) | register and call a pattern in one process | `node local/index.js` |
 | [tcp](tcp) | call a microservice over TCP | `node tcp/service.js`, then `node tcp/client.js` |
+| [balance](balance) | spread calls over two instances of a service | `PORT=3031 node balance/service.js`, `PORT=3032 node balance/service.js`, then `node balance/client.js` |
 | [mongodb](mongodb/index.js) | store and read documents with [devis-mongo-client](https://github.com/Devisjs/devis-mongo-client) | `node mongodb/index.js` |
 | [redis](redis/index.js) | publish and subscribe with [devis-pub_sub-redis](https://github.com/Devisjs/devis-pub_sub-redis) | `node redis/index.js` |
 | [rabbitmq](rabbitmq) | call a microservice through RabbitMQ with [devis_rabbitmq](https://github.com/Devisjs/devis_rabbitmq) | `node rabbitmq/server.js`, then `node rabbitmq/client.js` |
