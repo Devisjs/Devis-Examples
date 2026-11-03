@@ -10,7 +10,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "devis": "^4.0.0",
+    "devis": "^4.1.0",
     "devis-mongo-client": "^2.0.1",
     "devis-pub_sub-redis": "^2.0.1",
     "devis_rabbitmq": "^2.1.0"
