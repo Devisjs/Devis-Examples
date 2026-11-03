@@ -5,9 +5,7 @@ const devis = require("devis").plug("devis-mongo-client");
 const url = process.env.MONGO_URL || "mongodb://localhost:27017/devis_examples";
 
 function call(action, args) {
-    return new Promise((resolve, reject) => {
-        devis.call({ role: "mongodb", action }, args, (err, res) => (err ? reject(err) : resolve(res)));
-    });
+    return devis.call({ role: "mongodb", action }, args);
 }
 
 async function main() {
